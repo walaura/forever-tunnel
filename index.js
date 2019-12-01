@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-require("dotenv").config();
+require("dotenv").config({ path: __dirname + "/.env" });
 const localtunnel = require("localtunnel");
 const postEndpoint = require("./save.js");
 
