@@ -1,10 +1,10 @@
 {
-  "name": "forever-tunnel",
-  "version": "1.0.0",
+  "name": "@walaura/forever-tunnel",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "bin": {
-    "forever-tunnel": "index.js"
+    "forever-tunnel": "bin.js"
   },
   "scripts": {
     "start": "node index.js"

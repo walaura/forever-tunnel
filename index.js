@@ -1,11 +1,10 @@
-#!/usr/bin/env node
+require("dotenv").config();
 
-require("dotenv").config({ path: __dirname + "/.env" });
-const localtunnel = require("localtunnel");
-const postEndpoint = require("./save.js");
+const postEndpoint = require("./aws/save");
+const read = require("./aws/read");
 
-const main = async () => {
-  const port = parseInt(process.argv.pop()) || 80;
+const main = async (port = 80) => {
+  const localtunnel = require("localtunnel");
   console.log("Handshake... " + port);
   const { url } = await localtunnel({ port });
   console.log("Tunnel set up, waiting for aws");
@@ -13,4 +12,5 @@ const main = async () => {
   await postEndpoint({ url, port });
   console.log("done, dont close me!!");
 };
-main();
+
+module.exports = { main, read };
