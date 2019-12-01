@@ -1,0 +1,23 @@
+{
+  "name": "forever-tunnel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lt --port 5000 --subdomain yahaha-you-found-me &",
+    "pinger": "ping yahaha-you-found-me.localtunnel.me -c 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walaura/forever-tunnel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walaura/forever-tunnel/issues"
+  },
+  "homepage": "https://github.com/walaura/forever-tunnel#readme",
+  "dependencies": {
+    "localtunnel": "^2.0.0"
+  }
+}
