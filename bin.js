@@ -1,4 +1,8 @@
 #!/usr/bin/env node
 
 const { main } = require("./index.js");
-main(parseInt(process.argv.pop()) || 80);
+
+const identifier = process.argv.pop();
+const port = parseInt(process.argv.pop());
+
+main({ identifier, port });

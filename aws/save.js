@@ -2,7 +2,7 @@ const AWS = require("aws-sdk");
 const object = require("./object");
 const read = require("./read");
 
-const postEndpoint = ({ url, port = 80 }) => {
+const postEndpoint = ({ url, port = 80, identifier = port }) => {
   const [
     accessKeyId,
     secretAccessKey
@@ -14,21 +14,24 @@ const postEndpoint = ({ url, port = 80 }) => {
   });
 
   return read()
-    .then(json => {
-      s3.upload(
-        {
-          ...object(process.env.FOREVERTUNNEL_BUCKET),
-          Body: JSON.stringify({ ...json, [port]: url })
-        },
-        function(err, data) {
-          if (err) {
-            throw err;
-          }
-          console.log(`Synced with AWS`);
-          yay();
-        }
-      );
-    })
+    .then(
+      json =>
+        new Promise(yay => {
+          s3.upload(
+            {
+              ...object(process.env.FOREVERTUNNEL_BUCKET),
+              Body: JSON.stringify({ ...json, [identifier]: url })
+            },
+            function(err, data) {
+              if (err) {
+                throw err;
+              }
+              console.log(`Synced ${identifier} with AWS`);
+              yay();
+            }
+          );
+        })
+    )
     .catch(
       () =>
         new Promise(yay => {

@@ -1,7 +1,10 @@
 const AWS = require("aws-sdk");
 const object = require("./object");
 
-const read = async ({ key = process.env.FOREVERTUNNEL_AWS_KEY, bucket }) => {
+const read = async ({
+  key = process.env.FOREVERTUNNEL_AWS_KEY,
+  bucket
+} = {}) => {
   const [accessKeyId, secretAccessKey] = key.split(",");
 
   const s3 = new AWS.S3({
