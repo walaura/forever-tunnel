@@ -1,11 +1,8 @@
 const AWS = require("aws-sdk");
 const object = require("./object");
 
-const read = async () => {
-  const [
-    accessKeyId,
-    secretAccessKey
-  ] = process.env.FOREVERTUNNEL_AWS_KEY.split(",");
+const read = async ({ key = process.env.FOREVERTUNNEL_AWS_KEY, bucket }) => {
+  const [accessKeyId, secretAccessKey] = key.split(",");
 
   const s3 = new AWS.S3({
     accessKeyId,
@@ -14,7 +11,7 @@ const read = async () => {
 
   let json = {};
   return new Promise(yay => {
-    s3.getObject(object, (err, data) => {
+    s3.getObject(object(bucket), (err, data) => {
       if (err) {
         nay(err);
       }

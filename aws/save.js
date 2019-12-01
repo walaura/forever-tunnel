@@ -17,7 +17,7 @@ const postEndpoint = ({ url, port = 80 }) => {
     .then(json => {
       s3.upload(
         {
-          ...object,
+          ...object(process.env.FOREVERTUNNEL_BUCKET),
           Body: JSON.stringify({ ...json, [port]: url })
         },
         function(err, data) {
@@ -34,7 +34,7 @@ const postEndpoint = ({ url, port = 80 }) => {
         new Promise(yay => {
           s3.upload(
             {
-              ...object,
+              ...object(process.env.FOREVERTUNNEL_BUCKET),
               Body: "{}"
             },
             function(err) {
