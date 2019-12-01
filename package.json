@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "forever-tunnel": "index.js"
+  },
   "scripts": {
-    "start": "lt --port 5000 --subdomain yahaha-you-found-me &",
-    "pinger": "ping yahaha-you-found-me.localtunnel.me -c 1"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,8 @@
   },
   "homepage": "https://github.com/walaura/forever-tunnel#readme",
   "dependencies": {
+    "aws-sdk": "^2.580.0",
+    "dotenv": "^8.2.0",
     "localtunnel": "^2.0.0"
   }
 }
