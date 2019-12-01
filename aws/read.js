@@ -20,7 +20,7 @@ const read = async ({
       }
       try {
         json = JSON.parse(data.Body.toString());
-      } catch {
+      } catch (e) {
         console.info("oops, json was broken - starting over");
       }
       yay(json);
