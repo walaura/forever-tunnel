@@ -13,7 +13,7 @@ const read = async ({
   });
 
   let json = {};
-  return new Promise(yay => {
+  return new Promise((yay, nay) => {
     s3.getObject(object(bucket), (err, data) => {
       if (err) {
         nay(err);
