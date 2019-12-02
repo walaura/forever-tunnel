@@ -2,7 +2,11 @@ const AWS = require("aws-sdk");
 const object = require("./object");
 const read = require("./read");
 
-const postEndpoint = ({ url, port = 80, identifier = port }) => {
+const postEndpoint = async ({ url, port = 80, identifier = port }) => {
+  if (!process.env.FOREVERTUNNEL_AWS_KEY) {
+    throw "no key";
+  }
+
   const [
     accessKeyId,
     secretAccessKey
