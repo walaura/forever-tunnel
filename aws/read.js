@@ -21,6 +21,7 @@ const read = async ({
       try {
         json = JSON.parse(data.Body.toString());
       } catch (e) {
+        console.log(json);
         console.info("oops, json was broken - starting over");
       }
       yay(json);
